@@ -15,6 +15,13 @@ func AddUserHandler(w http.ResponseWriter, r *http.Request) {
     w.WriteHeader(http.StatusCreated)
 }
 
+func ShortPollHandler(w http.ResponseWriter, r *http.Request) {
+    users := GetUsers()
+    w.Header().Set("Content-Type", "application/json")
+    json.NewEncoder(w).Encode(users)
+}
+
+
 func GetUsersHandler(w http.ResponseWriter, r *http.Request) {
     users := GetUsers()
     json.NewEncoder(w).Encode(users)
